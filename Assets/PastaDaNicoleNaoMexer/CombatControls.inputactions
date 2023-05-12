@@ -1,0 +1,65 @@
+{
+    "name": "CombatControls",
+    "maps": [
+        {
+            "name": "CombatMap",
+            "id": "338231ac-a0a2-4f30-8dda-078e1d473f8f",
+            "actions": [
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "fdbc495b-06ba-4ae7-9ba4-5c161886be46",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "9149b486-3181-4e74-900a-9be0df7299f3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9748c15e-c155-4ca7-91bb-990662c1fcd9",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ed05d608-37d9-4d1c-88d6-2f49b7b9db7c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "363d2da1-62c0-4dba-9767-c6b6882d62cd",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
