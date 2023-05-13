@@ -44,6 +44,15 @@ public partial class @CombatControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Camuflagem"",
+                    ""type"": ""Button"",
+                    ""id"": ""23c2775f-7bd8-4996-8109-6e3dc5bd1212"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -79,6 +88,17 @@ public partial class @CombatControls : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""98d9f79b-9a4c-4ec9-b178-53113f185a42"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camuflagem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -89,6 +109,7 @@ public partial class @CombatControls : IInputActionCollection2, IDisposable
         m_CombatMap = asset.FindActionMap("CombatMap", throwIfNotFound: true);
         m_CombatMap_Attack = m_CombatMap.FindAction("Attack", throwIfNotFound: true);
         m_CombatMap_Interact = m_CombatMap.FindAction("Interact", throwIfNotFound: true);
+        m_CombatMap_Camuflagem = m_CombatMap.FindAction("Camuflagem", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -150,12 +171,14 @@ public partial class @CombatControls : IInputActionCollection2, IDisposable
     private ICombatMapActions m_CombatMapActionsCallbackInterface;
     private readonly InputAction m_CombatMap_Attack;
     private readonly InputAction m_CombatMap_Interact;
+    private readonly InputAction m_CombatMap_Camuflagem;
     public struct CombatMapActions
     {
         private @CombatControls m_Wrapper;
         public CombatMapActions(@CombatControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Attack => m_Wrapper.m_CombatMap_Attack;
         public InputAction @Interact => m_Wrapper.m_CombatMap_Interact;
+        public InputAction @Camuflagem => m_Wrapper.m_CombatMap_Camuflagem;
         public InputActionMap Get() { return m_Wrapper.m_CombatMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -171,6 +194,9 @@ public partial class @CombatControls : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_CombatMapActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_CombatMapActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_CombatMapActionsCallbackInterface.OnInteract;
+                @Camuflagem.started -= m_Wrapper.m_CombatMapActionsCallbackInterface.OnCamuflagem;
+                @Camuflagem.performed -= m_Wrapper.m_CombatMapActionsCallbackInterface.OnCamuflagem;
+                @Camuflagem.canceled -= m_Wrapper.m_CombatMapActionsCallbackInterface.OnCamuflagem;
             }
             m_Wrapper.m_CombatMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -181,6 +207,9 @@ public partial class @CombatControls : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Camuflagem.started += instance.OnCamuflagem;
+                @Camuflagem.performed += instance.OnCamuflagem;
+                @Camuflagem.canceled += instance.OnCamuflagem;
             }
         }
     }
@@ -189,5 +218,6 @@ public partial class @CombatControls : IInputActionCollection2, IDisposable
     {
         void OnAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnCamuflagem(InputAction.CallbackContext context);
     }
 }
