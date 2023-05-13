@@ -8,7 +8,7 @@ public class Attack : MonoBehaviour
     [SerializeField] private Camera _mainCamera;
     [SerializeField] GameObject _projectile;
     [SerializeField] Transform _attackPoint;
-    [SerializeField] float _attackVelocity = 500f;
+    [SerializeField] float _attackVelocity = 700f;
     [SerializeField] float _fireRate = 1f;
 
     private Rigidbody _myRigidbody;
@@ -62,7 +62,7 @@ public class Attack : MonoBehaviour
         if (_holdObject != null)
         {
             _holdObject.transform.SetParent(null);
-             _holdObject.GetComponent<Rigidbody>().AddRelativeForce(
+            _holdObject.GetComponent<Rigidbody>().AddRelativeForce(
                                 new Vector3(0, 0, _attackVelocity)
             );
             _holdObject = null;
