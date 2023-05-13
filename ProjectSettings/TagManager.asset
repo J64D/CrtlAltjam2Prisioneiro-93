@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Arremesaveis
   - Arremessavel
+  - Creatura
+  - Interativo
   layers:
   - Default
   - TransparentFX
