@@ -52,13 +52,6 @@ public class Attack : MonoBehaviour
 
     private void Launch()
     {
-        
-        // Vector3 v = new Vector3(_attackPoint.position.x, _attackPoint.position.y, _attackPoint.position.z);
-        // GameObject newProjectile = Instantiate(_projectile, v, transform.rotation);
-        // newProjectile.GetComponent<Rigidbody>().AddRelativeForce(
-        //                                 new Vector3(0, 0, _attackVelocity)
-        // );
-
         if (_holdObject != null)
         {
             _holdObject.transform.SetParent(null);
@@ -66,7 +59,16 @@ public class Attack : MonoBehaviour
                                 new Vector3(0, 0, _attackVelocity)
             );
             _holdObject = null;
+            this.gameObject.GetComponent<Interact>().holdObject = null;
         Debug.Log("arremesar");
+        } else
+        {
+            Vector3 v = new Vector3(_attackPoint.position.x, _attackPoint.position.y, _attackPoint.position.z);
+            GameObject newProjectile = Instantiate(_projectile, v, transform.rotation);
+            newProjectile.GetComponent<Rigidbody>().AddRelativeForce(
+                                new Vector3(0, 0, _attackVelocity)
+            );
         }
+
     }
 }
