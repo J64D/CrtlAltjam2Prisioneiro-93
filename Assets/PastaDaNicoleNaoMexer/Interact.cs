@@ -44,10 +44,7 @@ public class Interact : MonoBehaviour
         {
             SetNewForm();
         }
-        if (followForm)
-        {
-            //interactiveObject.GetComponent<Rigidbody>().velocity = this.gameObject.GetComponent<Rigidbody>().velocity;
-        }
+      
         
     }
 
