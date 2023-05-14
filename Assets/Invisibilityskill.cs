@@ -7,7 +7,7 @@ public class Invisibilityskill : MonoBehaviour
 {
     //[SerializeField] Material material; 
     private CombatControls _myInput;
-    private bool _isInvisible = false;
+    public bool _isInvisible = false;
     public Renderer rend;
     public GameObject rendAlpha;
 
