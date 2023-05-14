@@ -12,13 +12,15 @@ public class Interact : MonoBehaviour
     [SerializeField] Material CreatureSelectedMaterial;
     [SerializeField] Material InteractSelectedMaterial;
     [SerializeField] Material DefaultMaterial;
+    public GameObject[] otherMesh;
     public GameObject holdObject;
-    public SkinnedMeshRenderer newForm;
+    public bool newForm;
+    public bool followForm;
     private Collider interactiveObject;
     private Collider interactiveCreature;
     private CombatControls _myInput;
 
-    public SkinnedMeshRenderer _renderer;
+    public Renderer _renderer;
     private void Awake()
     {
         _myInput = new CombatControls();
@@ -29,13 +31,20 @@ public class Interact : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _renderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        _renderer = GetComponentInChildren<Renderer>();
+        newForm = false;
+        followForm = false;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Selected();
+        if (newForm)
+        {
+            SetNewForm();
+        }
+      
         
     }
 
@@ -53,13 +62,31 @@ public class Interact : MonoBehaviour
             if (interactiveObject.CompareTag("Creatura"))
             {
                 //newForm = new MeshRenderer();
-                newForm = interactiveObject.gameObject.GetComponent<SkinnedMeshRenderer>();
-                Destroy(interactiveObject.gameObject, 2f);
-                _renderer = newForm;
+              
+                newForm = true;
+                // interactiveObject.transform.localPosition = this.gameObject.transform.localPosition;
+                // interactiveObject.transform.localRotation = this.gameObject.transform.localRotation;
+                //newForm = interactiveObject.gameObject.GetComponent<Renderer>();
+                //Destroy(interactiveObject.gameObject, 2f);
+                //_renderer = newForm;
                 //interactiveObject.transform.SetParent(transform);
             }
         }
        
+    }
+
+    private void SetNewForm()
+    {
+        followForm = true;
+        _renderer.enabled = false;
+        interactiveObject.transform.position = this.gameObject.transform.position;
+        interactiveObject.transform.rotation = this.gameObject.transform.rotation;
+
+        interactiveObject.transform.SetParent(transform);
+        interactiveObject.GetComponent<Renderer>().material = _renderer.material;
+        interactiveObject.tag = "Player";
+        interactiveObject.GetComponent<MovePlaceHolder>().enabled = true;
+        newForm = false;
     }
 
     private void Selected()
