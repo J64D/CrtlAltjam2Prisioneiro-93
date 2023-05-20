@@ -32,5 +32,6 @@ public class MovePlaceHolder : MonoBehaviour
     {
         Vector3 move = new Vector3(_playerDirection.x, 0f, _playerDirection.y);
         _myRigidbody.velocity = move * Time.deltaTime * _speed;
+        //transform.Translate(move * Time.deltaTime * _speed);
     }
 }
