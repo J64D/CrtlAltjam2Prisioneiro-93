@@ -1,30 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class switchCam : MonoBehaviour
 {
 
-    public GameObject camSwitch, camExchanged;
+    public CinemachineVirtualCamera currentCam;
+    //public GameObject camSwitch, camExchanged;
 
-    int flag = 0;
+    // int flag = 0;
+
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.gameObject.CompareTag("Player"))
+    //     {
+    //         if(flag == 0)
+    //         {
+    //             camSwitch.SetActive(true);
+    //             camExchanged.SetActive(false);
+    //             flag++;
+    //         }
+    //         else
+    //         {
+    //             camSwitch.SetActive(false);
+    //             camExchanged.SetActive(true);
+    //             flag--;
+    //         }
+    //     }
+    // }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            if(flag == 0)
-            {
-                camSwitch.SetActive(true);
-                camExchanged.SetActive(false);
-                flag++;
-            }
-            else
-            {
-                camSwitch.SetActive(false);
-                camExchanged.SetActive(true);
-                flag--;
-            }
+            currentCam.Priority = 1;
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            currentCam.Priority = 0;
+        }    
+    }
+    
+
 }
