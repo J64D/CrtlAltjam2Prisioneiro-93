@@ -71,6 +71,11 @@ public class Interact : MonoBehaviour
                 //_renderer = newForm;
                 //interactiveObject.transform.SetParent(transform);
             }
+
+            if(interactiveObject.CompareTag("Robo"))
+            {
+                Destroy(interactiveObject.gameObject, 1f);
+            }
         }
        
     }
@@ -93,7 +98,7 @@ public class Interact : MonoBehaviour
     {
         if(interactiveObject != null)
         {
-            var selectionRenderer = interactiveObject.GetComponent<Renderer>();
+            var selectionRenderer = interactiveObject.GetComponentInChildren<Renderer>();
             selectionRenderer.material = DefaultMaterial;
             interactiveObject = null;
         }
@@ -108,7 +113,7 @@ public class Interact : MonoBehaviour
             {
                 ArremessavelSeletion(selection);
             }
-            if (selection.CompareTag("Creatura"))
+            if (selection.CompareTag("Creatura") || selection.CompareTag("Robo") )
             {
                 CreaturaSeletion(selection);
             }
