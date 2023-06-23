@@ -293,13 +293,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3711161759751602499}
   - component: {fileID: 7305011363867253561}
-  - component: {fileID: 3749819020178785824}
-  - component: {fileID: 3749819020178785827}
   - component: {fileID: 3749819020178785838}
   - component: {fileID: 3749819020178785837}
   - component: {fileID: 3749819020178785826}
   - component: {fileID: 3749819020178785830}
   - component: {fileID: 1939576168}
+  - component: {fileID: 6647256117737885713}
+  - component: {fileID: 3957511184420000050}
+  - component: {fileID: 3478567415524479088}
   m_Layer: 7
   m_Name: OtoSlime
   m_TagString: Player
@@ -348,35 +349,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!54 &3749819020178785824
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4092471723972254713}
-  serializedVersion: 2
-  m_Mass: 10
-  m_Drag: 0
-  m_AngularDrag: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 1
---- !u!65 &3749819020178785827
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4092471723972254713}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.43978477, y: 0.39452344, z: 0.37781143}
-  m_Center: {x: -0.007432103, y: 0.81824636, z: 0.019115448}
 --- !u!114 &3749819020178785838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,11 +418,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4092471723972254713}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b24473337235404b8b2bd9a4ed77e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
   _speed: 250
   _playerDirection: {x: 0, y: 0}
 --- !u!114 &1939576168
@@ -460,7 +433,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4092471723972254713}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa1fa5f38b80e2b4d91838a070d03b37, type: 3}
   m_Name: 
@@ -469,6 +442,51 @@ MonoBehaviour:
   stepRayUpper: {fileID: 1630651173}
   stepHeight: 0.3
   stepSmooth: 0.1
+--- !u!143 &6647256117737885713
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4092471723972254713}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 0.4
+  m_Radius: 0.35
+  m_SlopeLimit: 45
+  m_StepOffset: 0.4
+  m_SkinWidth: 0.035
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &3957511184420000050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4092471723972254713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64fb4babd173604fa37a91525343fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <InputReader>k__BackingField: {fileID: 3478567415524479088}
+  <Controller>k__BackingField: {fileID: 6647256117737885713}
+  <MovementSpeed>k__BackingField: 7
+--- !u!114 &3478567415524479088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4092471723972254713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd3e3f8435e44f4fb5eb33863e206aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4797851126006587734
 GameObject:
   m_ObjectHideFlags: 0
